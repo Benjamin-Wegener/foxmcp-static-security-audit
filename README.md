@@ -1,6 +1,6 @@
 # FoxMCP Static Security Audit Reports
 
-This repository contains static security audit materials for FoxMCP, including verified findings and report artifacts.
+This repository contains static security audit materials for FoxMCP and report artifacts.
 
 All audit conclusions were derived from **static source analysis**.
 
@@ -9,9 +9,8 @@ All audit conclusions were derived from **static source analysis**.
 ## Table of Contents
 
 - [1. FoxMCP Security Audit](#1-foxmcp-security-audit)
-- [2. Findings Verification](#2-findings-verification)
-- [3. Overall Security Assessment](#3-overall-security-assessment)
-- [4. Original Project README (Merged)](#4-original-project-readme-merged)
+- [2. Overall Security Assessment](#2-overall-security-assessment)
+- [3. Original Project README (Merged)](#3-original-project-readme-merged)
 
 ---
 
@@ -39,23 +38,7 @@ Static review of Firefox extension + local MCP bridge security boundaries.
 
 ---
 
-## 2. Findings Verification
-
-**Verification matrix:** [`audit-reports/findings_verification_2026-05-07.md`](audit-reports/findings_verification_2026-05-07.md)
-
-### Verification Status
-
-| Finding | Status |
-|---|---|
-| Overbroad extension scope | Confirmed |
-| Missing peer authentication on extension socket | Confirmed |
-| Predefined-script execution risk path | Confirmed |
-| Localhost-only server binding | Confirmed mitigation |
-| Script path validation guard | Confirmed mitigation |
-
----
-
-## 3. Overall Security Assessment
+## 2. Overall Security Assessment
 
 FoxMCP provides strong automation capability and is intentionally powerful, but that power comes with a high-trust local model.
 
@@ -74,7 +57,7 @@ FoxMCP provides strong automation capability and is intentionally powerful, but 
 
 ---
 
-## 4. Original Project README (Merged)
+## 3. Original Project README (Merged)
 
 The original FoxMCP project README is preserved below unchanged.
 
