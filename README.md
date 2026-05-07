@@ -1,3 +1,85 @@
+# FoxMCP Static Security Audit Reports
+
+This repository contains static security audit materials for FoxMCP, including verified findings and report artifacts.
+
+All audit conclusions were derived from **static source analysis**.
+
+---
+
+## Table of Contents
+
+- [1. FoxMCP Security Audit](#1-foxmcp-security-audit)
+- [2. Findings Verification](#2-findings-verification)
+- [3. Overall Security Assessment](#3-overall-security-assessment)
+- [4. Original Project README (Merged)](#4-original-project-readme-merged)
+
+---
+
+## 1. FoxMCP Security Audit
+
+**Report:** [`audit-reports/audit_report_foxmcp_2026-05-07.md`](audit-reports/audit_report_foxmcp_2026-05-07.md)
+
+### Summary
+
+Static review of Firefox extension + local MCP bridge security boundaries.
+
+### Key Findings
+
+| Category | Severity | Verdict |
+|---|---|---|
+| Extension permission scope (`<all_urls>`, `webRequest`) | High | Needs hardening |
+| Extension-WebSocket trust/auth boundary | High | Needs hardening |
+| Script execution chain (`subprocess` -> browser JS execution) | High | Needs hardening |
+| Localhost bind enforcement | Mitigation present | Positive control |
+| Script path traversal checks | Mitigation present | Positive control |
+
+### Current Audit Verdict
+
+**CONDITIONAL / NEEDS HARDENING**
+
+---
+
+## 2. Findings Verification
+
+**Verification matrix:** [`audit-reports/findings_verification_2026-05-07.md`](audit-reports/findings_verification_2026-05-07.md)
+
+### Verification Status
+
+| Finding | Status |
+|---|---|
+| Overbroad extension scope | Confirmed |
+| Missing peer authentication on extension socket | Confirmed |
+| Predefined-script execution risk path | Confirmed |
+| Localhost-only server binding | Confirmed mitigation |
+| Script path validation guard | Confirmed mitigation |
+
+---
+
+## 3. Overall Security Assessment
+
+FoxMCP provides strong automation capability and is intentionally powerful, but that power comes with a high-trust local model.
+
+### Security Posture Snapshot
+
+- High privilege extension capabilities are enabled.
+- Local-only bind behavior exists and reduces remote exposure.
+- Privileged operations should be gated more tightly for production use.
+
+### Recommended Hardening Priority
+
+1. Add authenticated handshake between extension and local server.
+2. Gate predefined script execution behind explicit opt-in.
+3. Reduce extension permission surface where possible.
+4. Add security-focused audit logs for privileged actions.
+
+---
+
+## 4. Original Project README (Merged)
+
+The original FoxMCP project README is preserved below unchanged.
+
+---
+
 # FoxMCP - Firefox Browser Automation via MCP
 
 A Firefox extension that exposes browser functionality to AI assistants and automation tools through the Model Context Protocol (MCP). Control tabs, history, bookmarks, navigation, content, and windows programmatically.
